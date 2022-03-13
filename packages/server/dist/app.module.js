@@ -12,6 +12,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -20,6 +21,9 @@ AppModule = __decorate([
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: (0, path_1.join)(__dirname, '../../client/', 'dist/client'),
                 exclude: ['/api'],
+            }),
+            config_1.ConfigModule.forRoot({
+                envFilePath: __dirname + '/../../../.env',
             }),
         ],
         controllers: [app_controller_1.AppController],

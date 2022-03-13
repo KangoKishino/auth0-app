@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: "",redirectTo:"top", pathMatch:"full"},
   {path: "top",component: TopComponent},
   {path: "join",component: JoinComponent},
-  // {path: "mypage",component: MypageComponent, canActivate:[AuthGuard]},
-  {path: "mypage",component: MypageComponent},
+  {path: "mypage",component: MypageComponent, canActivate:[AuthGuard]},
+  // {path: "mypage",component: MypageComponent},
 ];
 
 @NgModule({
