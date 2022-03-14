@@ -1,5 +1,5 @@
 import {Injectable, Scope} from '@nestjs/common';
-import { ManagementClient } from "auth0"
+import { AuthenticationClient, ManagementClient } from "auth0"
 
 @Injectable({
   scope:Scope.REQUEST
@@ -30,6 +30,11 @@ export class AppService {
       password,
       name,
       email_verified: true,
+    })
+  }
+  async profile(id: string): Promise<any> {
+    return await this.manageClient.getUser({
+      id
     })
   }
 }

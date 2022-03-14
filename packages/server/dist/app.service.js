@@ -35,6 +35,11 @@ let AppService = class AppService {
             email_verified: true,
         });
     }
+    async profile(id) {
+        return await this.manageClient.getUser({
+            id
+        });
+    }
 };
 AppService = __decorate([
     (0, common_1.Injectable)({

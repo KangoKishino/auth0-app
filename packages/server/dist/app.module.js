@@ -13,6 +13,8 @@ const app_service_1 = require("./app.service");
 const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
 const config_1 = require("@nestjs/config");
+const passport_1 = require("@nestjs/passport");
+const jwt_strategy_1 = require("./jwt.strategy");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,9 +27,10 @@ AppModule = __decorate([
             config_1.ConfigModule.forRoot({
                 envFilePath: __dirname + '/../../../.env',
             }),
+            passport_1.PassportModule.register({ defaultStrategy: 'jwt' })
         ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, jwt_strategy_1.JwtStrategy],
     })
 ], AppModule);
 exports.AppModule = AppModule;

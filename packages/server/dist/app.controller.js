@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const passport_1 = require("@nestjs/passport");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
@@ -28,6 +29,14 @@ let AppController = class AppController {
         const result = await this.appService.register(body.email, body.password, body.name);
         return {
             "hello": "hello"
+        };
+    }
+    async profile(req) {
+        const result = await this.appService.profile(req.user.sub);
+        return {
+            hoge: "piyo",
+            payload: req.user,
+            user: result
         };
     }
 };
@@ -44,6 +53,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "register", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt")),
+    (0, common_1.Get)("profile"),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "profile", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

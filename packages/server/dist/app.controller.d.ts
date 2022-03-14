@@ -4,4 +4,9 @@ export declare class AppController {
     constructor(appService: AppService);
     getHello(): string;
     register(body: any): Promise<any>;
+    profile(req: any): Promise<{
+        hoge: string;
+        payload: any;
+        user: any;
+    }>;
 }
