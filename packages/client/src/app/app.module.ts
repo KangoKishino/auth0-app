@@ -18,28 +18,28 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    // HttpClientModule,
     AuthModule.forRoot({
       domain: 'curly-pine-0081.us.auth0.com',
       clientId: 'VsKcAxFW5rbfF8dwkQkgho0iPKWb4Dkg',
       redirectUri: window.location.origin + "/mypage",
       audience: "https://curly-pine-0081.us.auth0.com/api/v2/",
-      scope: 'read:current_user',
-      httpInterceptor: {
-        allowedList: [
-          '/api/*',
-          {
-            uri: '/api/guest/*',
-            allowAnonymous: true,
-          },
+      // scope: 'read:current_user',
+      // httpInterceptor: {
+      //   allowedList: [
+      //     '/api/*',
+      //     {
+      //       uri: '/api/guest/*',
+      //       allowAnonymous: true,
+      //     },
 
-        ]
-      }
+      //   ]
+      // }
     }),
     AppRoutingModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
