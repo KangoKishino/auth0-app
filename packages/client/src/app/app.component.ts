@@ -14,7 +14,7 @@ export class AppComponent {
 
   logout(){
     this.auth.logout({
-      returnTo: document.location.origin
+      returnTo: `${document.location.origin}/top`
     })
   }
 }
